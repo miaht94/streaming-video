@@ -1,0 +1,5 @@
+video.mp4
+*.o
+*.exe
+*.dll
+./libs

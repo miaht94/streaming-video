@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "name": "Test",
+            "includePath": [
+                "C:/w64devkit/x86_64-w64-mingw32/include",
+                "C:/Code/d3d11/include"
+            ],
+            "intelliSenseMode": "windows-gcc-x64",
+            "compilerPath": "C:/w64devkit/bin/gcc.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++11"
+        }
+    ],
+    "version": 4
+}

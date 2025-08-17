@@ -18,9 +18,9 @@ private:
     SDL_Texture* texture;
     SDL_Renderer* renderer;
     const int WIDTH = 1000;
-    const int HEIGH = 600;
+    const int HEIGHT = 600;
     const int DESKTOP_WIDTH = 2560;
-    const int DESKTOP_HEIGH = 1440;
+    const int DESKTOP_HEIGHT = 1440;
     const int POS_X = 100;
     const int POS_Y = 100;
 public:

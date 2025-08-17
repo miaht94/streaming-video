@@ -10,7 +10,7 @@ extern "C" {
 Renderer::Renderer(ThreadSafeQueue<AVFrame*> *queue_buffer) {
     SDL_Init(SDL_INIT_VIDEO);
     this->frame_buffer = queue_buffer;
-    this->windows = SDL_CreateWindow("SDL2 Renderer", this->POS_X, this->POS_Y, this->WIDTH, this->HEIGH, SDL_WINDOW_SHOWN);
+    this->windows = SDL_CreateWindow("SDL2 Renderer", this->POS_X, this->POS_Y, this->WIDTH, this->HEIGHT, SDL_WINDOW_SHOWN);
     if (!this->windows) {
         std::cerr << "Could not create windows for render SDL2: " << SDL_GetError() << std::endl;
     }
@@ -18,7 +18,7 @@ Renderer::Renderer(ThreadSafeQueue<AVFrame*> *queue_buffer) {
     if (renderer == NULL) {
         std::cerr << "Could not create renderer: " << SDL_GetError() << std::endl;
     }
-    this->texture = SDL_CreateTexture(this->renderer, SDL_PIXELFORMAT_NV12, SDL_TEXTUREACCESS_STREAMING, this->WIDTH, this->HEIGH);
+    this->texture = SDL_CreateTexture(this->renderer, SDL_PIXELFORMAT_NV12, SDL_TEXTUREACCESS_STREAMING, this->WIDTH, this->HEIGHT);
     if (!this->texture) {
         std::cerr << "Can not init texture" << SDL_GetError() << std::endl;
     }
@@ -47,7 +47,7 @@ void Renderer::run() {
         if (!pop_result) {
             continue;
         }
-        SDL_Rect rect = {0, 0, 2560, 1440};
+        SDL_Rect rect = {0, 0, this->DESKTOP_WIDTH, this->DESKTOP_HEIGHT};
         SDL_SetRenderDrawColor(this->renderer, 255, 255, 255, 255);
         SDL_RenderClear(this->renderer);
         SDL_UpdateNVTexture(this->texture, &rect, frame_->data[0], frame_->linesize[0], frame_->data[1], frame_->linesize[1]);
